@@ -35,9 +35,3 @@ export function ProductCard(props: ProductsTemplate) {
     </div>
   );
 }
-
-// export default ProductCard;
-// export {
-//   ProductCard,
-//   ProductsTemplate,
-// }
