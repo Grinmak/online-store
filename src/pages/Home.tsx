@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Sort } from '../components/Sort';
 import '../css/Common.css';
 import { ProductCard, ProductsTemplate } from '../components/Products';
 
@@ -14,7 +15,9 @@ export const Home = () => {
   return (
     <>
       <div className='main-product-area'>
-        <div className='sorting-wrapper'></div>
+        <div className='sorting-wrapper'>
+          <Sort />
+        </div>
         <div className='products-wrapper'>
           {productsBase.map((prod: ProductsTemplate) => (
             <ProductCard key={prod.id} {...prod} />
