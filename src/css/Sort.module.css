@@ -1,0 +1,39 @@
+.selector {
+  position: relative;
+  /* display: flex; */
+}
+
+.list {
+  list-style-type: none;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0px;
+}
+
+.options {
+  position: absolute;
+  background: #fff;
+  z-index: 1;
+  left: 60px;
+  top: 120px;
+  border-radius: 10px;
+}
+
+.title {
+  display: inline;
+  padding: 0 10px 0 0;
+}
+
+.sortSelected {
+  cursor: pointer;
+}
+.active,
+.sortSelected {
+  color: orangered;
+  text-decoration: underline dotted orangered;
+  text-underline-offset: 3px;
+}
+
+li {
+  cursor: pointer;
+}
