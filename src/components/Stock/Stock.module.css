@@ -1,0 +1,4 @@
+.stock {
+  display: flex;
+  justify-content: space-between;
+}

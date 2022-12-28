@@ -5,6 +5,7 @@
   gap: 15px;
 }
 
-/* .sorting-wrapper {
-  display: flex;
-} */
+.main-content {
+  display: grid;
+  grid-template-columns: 240px 5fr;
+}
