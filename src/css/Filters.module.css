@@ -1,0 +1,9 @@
+.filters > div {
+  box-shadow: inset;
+}
+.filters {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  padding: 0 15px;
+}
