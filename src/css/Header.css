@@ -1,7 +1,13 @@
 .header {
   display: flex;
   /* width: 95vw; */
-  background: gray;
-  height: 100px;
+  /* background: gray; */
+  height: 140px;
   justify-content: space-between;
+  padding: 15px;
+}
+
+.logo-img {
+  max-height: 100%;
+  border-radius: 15px;
 }
