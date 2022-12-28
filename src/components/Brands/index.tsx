@@ -20,7 +20,7 @@ export function Brands(data: any) {
           {brandsList.map((categ: string, index: number) => {
             return (
               <div>
-                <input type='checkbox' name={categ} />
+                <input type='checkbox' name={categ} id={categ} />
                 <label htmlFor={categ}>{categ}</label>
               </div>
             );
