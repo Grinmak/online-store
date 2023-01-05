@@ -10,11 +10,13 @@ import styles from '../css/Filters.module.css';
 import { ProductsTemplate } from './Products';
 
 export function Filters(data: any) {
+  //get brands
   const brandsListSet = new Set(
     data.dataBase.map((item: ProductsTemplate) => item.brand)
   );
   const brandsListArray = Array.from(brandsListSet);
 
+  //get price
   const priceList = data.dataBase.map((item: ProductsTemplate) => item.price);
   const sortedList = priceList.sort((a: number, b: number) => {
     if (a > b) return 1;
@@ -22,6 +24,7 @@ export function Filters(data: any) {
   });
   const minMaxPrice = [sortedList[0], sortedList[sortedList.length - 1]];
 
+  //get stock
   const stockList = data.dataBase.map((item: ProductsTemplate) => item.stock);
   const sortedStock = stockList.sort((a: number, b: number) => {
     if (a > b) return 1;
