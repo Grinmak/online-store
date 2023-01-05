@@ -10,10 +10,14 @@ import { Filters } from '../components/Filter';
 export const Home = () => {
   const [productsBase, setProductsBase] = React.useState([]);
   React.useEffect(() => {
-    fetch('https://dummyjson.com/products?skip=0&limit=100')
+    // fetch('https://dummyjson.com/products?skip=0&limit=100')
+    // fetch('https://639de55b1ec9c6657bb515e8.mockapi.io/items')
+    fetch(
+      'https://639de55b1ec9c6657bb515e8.mockapi.io/items?sortBy=price&order=desc'
+    )
       .then((res) => res.json())
       // .then((dataBase) => setProductsBase(dataBase));
-      .then((dataBase) => setProductsBase(dataBase.products));
+      .then((dataBase) => setProductsBase(dataBase));
   }, []);
 
   return (

@@ -8,9 +8,6 @@ import styles from './Brands.module.css';
 
 export function Brands(data: any) {
   const brandsList: string[] = Array.from(data.brandsData);
-  // console.log(brandsList);
-  // const brandKey = React.useId();
-  // console.log(brandKey);
 
   return (
     <>
@@ -19,7 +16,7 @@ export function Brands(data: any) {
         <div className={styles.categSelector}>
           {brandsList.map((categ: string, index: number) => {
             return (
-              <div>
+              <div key={index}>
                 <input type='checkbox' name={categ} id={categ} />
                 <label htmlFor={categ}>{categ}</label>
               </div>

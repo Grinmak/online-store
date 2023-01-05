@@ -19,7 +19,7 @@ export function Categories(data: any) {
       <div className={styles.categSelector}>
         {categories.map((categ: string, index: number) => {
           return (
-            <div>
+            <div key={index}>
               <input type='checkbox' name={categ} id={categ} />
               <label htmlFor={categ}>{categ}</label>
             </div>
