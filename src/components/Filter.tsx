@@ -9,13 +9,29 @@ import { Stock } from './Stock';
 import styles from '../css/Filters.module.css';
 import { ProductsTemplate } from './Products';
 
+interface FilterTypes {
+  dataBase: any;
+  getName: Function;
+  removeName: Function;
+  getCateg: Function;
+  removeCateg: Function;
+}
+
 export function Filters({
   dataBase,
   getName,
   removeName,
   getCateg,
   removeCateg,
-}: any) {
+}: FilterTypes) {
+  //get categories
+  const [categories, setCategories] = React.useState([]);
+  React.useEffect(() => {
+    fetch('https://dummyjson.com/products/categories')
+      .then((res) => res.json())
+      // .then((dataBase) => setProductsBase(dataBase));
+      .then((categ) => setCategories(categ));
+  }, []);
   //get brands
   const brandsListSet = new Set(
     dataBase.map((item: ProductsTemplate) => item.brand)
@@ -42,11 +58,16 @@ export function Filters({
     <>
       <aside className={styles.filters}>
         <FilterButtons />
-        <Categories getCateg={getCateg} removeCateg={removeCateg} />
+        <Categories
+          getCateg={getCateg}
+          removeCateg={removeCateg}
+          categories={categories}
+        />
         <Brands
           brandsData={brandsListArray}
           getName={getName}
           removeName={removeName}
+          categories={categories}
         />
         <Price priceValues={minMaxPrice} />
         <Stock stockAmount={minMaxStock} />

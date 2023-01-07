@@ -4,11 +4,17 @@ import styles from './Brands.module.css';
 
 interface BrandsType {
   brandsData: any;
+  categories: any;
   getName: Function;
   removeName: Function;
 }
 
-export function Brands({ brandsData, getName, removeName }: BrandsType) {
+export function Brands({
+  brandsData,
+  getName,
+  removeName,
+  categories,
+}: BrandsType) {
   return (
     <>
       <div className={styles.categories}>

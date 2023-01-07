@@ -16,32 +16,39 @@ export const Home = () => {
   }, []);
 
   //make context from sort and categories available here
-  const [sortType, setSortType] = React.useState(0); //sorting
+  const [sortType, setSortType]: any = React.useState(0); //sorting
 
   //FILTER BRANDS
-  const [selectedBrands, setSelectedBrands] = React.useState([]);
+  const [selectedBrands, setSelectedBrands]: any = React.useState([]);
   //get name if checked
   const getBrandName = (name: any) => {
     setSelectedBrands(selectedBrands.concat(name));
   };
   //remove name if unchecked
   const removeBrandName = (name: any) => {
-    setSelectedBrands(selectedBrands.filter((item) => item !== name));
+    setSelectedBrands(selectedBrands.filter((item: any) => item !== name));
   };
-  console.log('home:', selectedBrands);
+  // console.log('home:', selectedBrands);
   //END BRANDS
 
   //FILTER CATEGORIES
-  const [selectedCateg, setSelectedCat] = React.useState([]);
+  // interface CategTypes {
+  //   selectedCateg: string[];
+  //   setSelectedCat: Function;
+  // }
+  const [selectedCateg, setSelectedCat]: any = React.useState([]);
   const addCateg = (name: any) => {
     setSelectedCat(selectedCateg.concat(name));
   };
   const removeCateg = (name: any) => {
-    setSelectedCat(selectedCateg.filter((item) => item !== name));
+    setSelectedCat(selectedCateg.filter((item: any) => item !== name));
   };
-  console.log('home:', selectedCateg);
-
+  // console.log('home:', selectedCateg);
   //END CATEGORIES
+  //final array based on which product`s card will be generated
+  // const [finalProdBase, setFinalProdBase] = React.useState(selectedCateg);
+  // setFinalProdBase(finalProdBase.concat(selectedBrands));
+  // console.log('fifnal:', finalProdBase);
 
   return (
     <>
@@ -58,9 +65,13 @@ export const Home = () => {
             <Sort />
           </div>
           <div className='products-wrapper'>
-            {productsBase.map((prod: ProductsTemplate) => (
-              <ProductCard key={prod.id} {...prod} />
-            ))}
+            {productsBase.map((prod: ProductsTemplate) =>
+              selectedCateg.includes(prod.category) ? (
+                <ProductCard key={prod.id} {...prod} />
+              ) : selectedBrands.includes(prod.brand) ? (
+                <ProductCard key={prod.id} {...prod} />
+              ) : null
+            )}
           </div>
         </div>
       </section>

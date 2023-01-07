@@ -4,16 +4,17 @@ import styles from './Categories.module.css';
 interface CategTypes {
   getCateg: Function;
   removeCateg: Function;
+  categories: any;
 }
 
-export function Categories({ getCateg, removeCateg }: CategTypes) {
-  const [categories, setCategories] = React.useState([]);
-  React.useEffect(() => {
-    fetch('https://dummyjson.com/products/categories')
-      .then((res) => res.json())
-      // .then((dataBase) => setProductsBase(dataBase));
-      .then((categ) => setCategories(categ));
-  }, []);
+export function Categories({ getCateg, removeCateg, categories }: CategTypes) {
+  // const [categories, setCategories] = React.useState([]);
+  // React.useEffect(() => {
+  //   fetch('https://dummyjson.com/products/categories')
+  //     .then((res) => res.json())
+  //     // .then((dataBase) => setProductsBase(dataBase));
+  //     .then((categ) => setCategories(categ));
+  // }, []);
 
   return (
     <div className={styles.categories}>
