@@ -2,22 +2,42 @@ import React from 'react';
 
 import styles from './Brands.module.css';
 
-// interface BrandsType {
-//   brandsData: string[];
-// }
+interface BrandsType {
+  brandsData: any;
+  categories: any;
+  getName: Function;
+  removeName: Function;
+}
 
-export function Brands(data: any) {
-  const brandsList: string[] = Array.from(data.brandsData);
+export function Brands({
+  brandsData,
+  getName,
+  removeName,
+  categories,
+}: BrandsType) {
+  const [checkboxStatus, setCheckboxStatus] = React.useState(false);
 
   return (
     <>
       <div className={styles.categories}>
         <div>Brands:</div>
         <div className={styles.categSelector}>
-          {brandsList.map((categ: string, index: number) => {
+          {brandsData.map((categ: string, index: number) => {
             return (
               <div key={index}>
-                <input type='checkbox' name={categ} id={categ} />
+                <input
+                  disabled={checkboxStatus}
+                  type='checkbox'
+                  name={categ}
+                  id={categ}
+                  onClickCapture={(e: any) => {
+                    if (e.target.checked) {
+                      getName(e.target.name);
+                    } else {
+                      removeName(e.target.name);
+                    }
+                  }}
+                />
                 <label htmlFor={categ}>{categ}</label>
               </div>
             );

@@ -1,17 +1,20 @@
 import React from 'react';
 import styles from './Categories.module.css';
 
-export function Categories(data: any) {
-  const [categories, setCategories] = React.useState([]);
-  React.useEffect(() => {
-    fetch('https://dummyjson.com/products/categories')
-      .then((res) => res.json())
-      // .then((dataBase) => setProductsBase(dataBase));
-      .then((categ) => setCategories(categ));
-  }, []);
-  // console.log(categories);
+interface CategTypes {
+  getCateg: Function;
+  removeCateg: Function;
+  categories: any;
+}
 
-  // const id = React.useId();
+export function Categories({ getCateg, removeCateg, categories }: CategTypes) {
+  // const [categories, setCategories] = React.useState([]);
+  // React.useEffect(() => {
+  //   fetch('https://dummyjson.com/products/categories')
+  //     .then((res) => res.json())
+  //     // .then((dataBase) => setProductsBase(dataBase));
+  //     .then((categ) => setCategories(categ));
+  // }, []);
 
   return (
     <div className={styles.categories}>
@@ -20,7 +23,18 @@ export function Categories(data: any) {
         {categories.map((categ: string, index: number) => {
           return (
             <div key={index}>
-              <input type='checkbox' name={categ} id={categ} />
+              <input
+                type='checkbox'
+                name={categ}
+                id={categ}
+                onClickCapture={(e: any) => {
+                  if (e.target.checked) {
+                    getCateg(e.target.name);
+                  } else {
+                    removeCateg(e.target.name);
+                  }
+                }}
+              />
               <label htmlFor={categ}>{categ}</label>
             </div>
           );

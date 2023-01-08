@@ -9,20 +9,45 @@ import { Stock } from './Stock';
 import styles from '../css/Filters.module.css';
 import { ProductsTemplate } from './Products';
 
-export function Filters(data: any) {
+interface FilterTypes {
+  dataBase: any;
+  getName: Function;
+  removeName: Function;
+  getCateg: Function;
+  removeCateg: Function;
+}
+
+export function Filters({
+  dataBase,
+  getName,
+  removeName,
+  getCateg,
+  removeCateg,
+}: FilterTypes) {
+  //get categories
+  const [categories, setCategories] = React.useState([]);
+  React.useEffect(() => {
+    fetch('https://dummyjson.com/products/categories')
+      .then((res) => res.json())
+      // .then((dataBase) => setProductsBase(dataBase));
+      .then((categ) => setCategories(categ));
+  }, []);
+  //get brands
   const brandsListSet = new Set(
-    data.dataBase.map((item: ProductsTemplate) => item.brand)
+    dataBase.map((item: ProductsTemplate) => item.brand)
   );
   const brandsListArray = Array.from(brandsListSet);
 
-  const priceList = data.dataBase.map((item: ProductsTemplate) => item.price);
+  //get price
+  const priceList = dataBase.map((item: ProductsTemplate) => item.price);
   const sortedList = priceList.sort((a: number, b: number) => {
     if (a > b) return 1;
     return -1;
   });
   const minMaxPrice = [sortedList[0], sortedList[sortedList.length - 1]];
 
-  const stockList = data.dataBase.map((item: ProductsTemplate) => item.stock);
+  //get stock
+  const stockList = dataBase.map((item: ProductsTemplate) => item.stock);
   const sortedStock = stockList.sort((a: number, b: number) => {
     if (a > b) return 1;
     return -1;
@@ -33,8 +58,17 @@ export function Filters(data: any) {
     <>
       <aside className={styles.filters}>
         <FilterButtons />
-        <Categories />
-        <Brands brandsData={brandsListArray} />
+        <Categories
+          getCateg={getCateg}
+          removeCateg={removeCateg}
+          categories={categories}
+        />
+        <Brands
+          brandsData={brandsListArray}
+          getName={getName}
+          removeName={removeName}
+          categories={categories}
+        />
         <Price priceValues={minMaxPrice} />
         <Stock stockAmount={minMaxStock} />
       </aside>
