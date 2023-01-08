@@ -15,6 +15,8 @@ export function Brands({
   removeName,
   categories,
 }: BrandsType) {
+  const [checkboxStatus, setCheckboxStatus] = React.useState(false);
+
   return (
     <>
       <div className={styles.categories}>
@@ -24,6 +26,7 @@ export function Brands({
             return (
               <div key={index}>
                 <input
+                  disabled={checkboxStatus}
                   type='checkbox'
                   name={categ}
                   id={categ}

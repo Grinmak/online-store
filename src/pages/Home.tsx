@@ -4,31 +4,36 @@ import { Sort } from '../components/Sort';
 import '../css/Common.css';
 import { ProductCard, ProductsTemplate } from '../components/Products';
 import { Filters } from '../components/Filter';
+// import { Categories } from '../components/Categories';
 
 export const Home = () => {
   const [productsBase, setProductsBase] = React.useState([]);
 
   React.useEffect(() => {
     // fetch('https://dummyjson.com/products?skip=0&limit=100')
-    fetch('https://639de55b1ec9c6657bb515e8.mockapi.io/items')
+    fetch(
+      'https://639de55b1ec9c6657bb515e8.mockapi.io/items?sortBy=price&order=desc'
+    )
       .then((res) => res.json())
       .then((dataBase) => setProductsBase(dataBase));
   }, []);
 
   //make context from sort and categories available here
   const [sortType, setSortType]: any = React.useState(0); //sorting
+  const [noFilters, setNoFilters] = React.useState(true);
 
   //FILTER BRANDS
   const [selectedBrands, setSelectedBrands]: any = React.useState([]);
   //get name if checked
   const getBrandName = (name: any) => {
     setSelectedBrands(selectedBrands.concat(name));
+    setNoFilters(false);
+    // allProdLoad();
   };
   //remove name if unchecked
   const removeBrandName = (name: any) => {
     setSelectedBrands(selectedBrands.filter((item: any) => item !== name));
   };
-  // console.log('home:', selectedBrands);
   //END BRANDS
 
   //FILTER CATEGORIES
@@ -39,16 +44,13 @@ export const Home = () => {
   const [selectedCateg, setSelectedCat]: any = React.useState([]);
   const addCateg = (name: any) => {
     setSelectedCat(selectedCateg.concat(name));
+    setNoFilters(false);
   };
   const removeCateg = (name: any) => {
     setSelectedCat(selectedCateg.filter((item: any) => item !== name));
   };
-  // console.log('home:', selectedCateg);
+
   //END CATEGORIES
-  //final array based on which product`s card will be generated
-  // const [finalProdBase, setFinalProdBase] = React.useState(selectedCateg);
-  // setFinalProdBase(finalProdBase.concat(selectedBrands));
-  // console.log('fifnal:', finalProdBase);
 
   return (
     <>
@@ -69,6 +71,10 @@ export const Home = () => {
               selectedCateg.includes(prod.category) ? (
                 <ProductCard key={prod.id} {...prod} />
               ) : selectedBrands.includes(prod.brand) ? (
+                <ProductCard key={prod.id} {...prod} />
+              ) : noFilters ? (
+                <ProductCard key={prod.id} {...prod} />
+              ) : !selectedCateg.length && !selectedBrands.length ? (
                 <ProductCard key={prod.id} {...prod} />
               ) : null
             )}
