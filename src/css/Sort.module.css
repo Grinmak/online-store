@@ -29,8 +29,8 @@
 }
 .active,
 .sortSelected {
-  color: orangered;
-  text-decoration: underline dotted orangered;
+  color: rgb(72, 74, 74);
+  text-decoration: underline dotted rgb(18, 192, 49);
   text-underline-offset: 3px;
 }
 
