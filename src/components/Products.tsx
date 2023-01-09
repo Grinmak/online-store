@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/ProductsCard.css';
+import { Link } from 'react-router-dom';
 
 export interface ProductsTemplate {
   id: number;
@@ -13,16 +14,23 @@ export interface ProductsTemplate {
   category: string;
   thumbnail: string;
   images: string[];
+  propsSearch: any;
 }
-export function ProductCard(props: ProductsTemplate) {
+export function ProductCard(props: any) {
   return (
     <div className='card__body'>
       <div className='card__image-body'>
-        <img
-          className='card__image'
-          src={props.thumbnail}
-          alt={props.category}
-        />
+        <Link
+          to={{
+            pathname: `/product/${props.id}/${props.title}`,
+          }}
+        >
+          <img
+            className='card__image'
+            src={props.thumbnail}
+            alt={props.category}
+          />
+        </Link>
       </div>
       <div className='card__info'>
         <div className='card__discount'>-{props.discountPercentage}%</div>

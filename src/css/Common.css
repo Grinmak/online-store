@@ -9,3 +9,8 @@
   display: grid;
   grid-template-columns: 240px 5fr;
 }
+
+.sorting-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,13 +1,34 @@
 .header {
   display: flex;
-  /* width: 95vw; */
-  /* background: gray; */
   height: 140px;
   justify-content: space-between;
   padding: 15px;
+  text-align: center;
 }
-
+.store-logo {
+  width: 210px;
+}
 .logo-img {
   max-height: 100%;
-  border-radius: 15px;
+}
+
+.cart {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.cart-total {
+  font-size: 40px;
+  width: 100%;
+  position: relative;
+}
+.cart-logo {
+  width: 210px;
+}
+.cart-img {
+  max-width: 100px;
+  position: absolute;
+  right: 90px;
+  top: 50px;
 }
