@@ -7,16 +7,17 @@ import { Filters } from '../components/Filter';
 // import { Categories } from '../components/Categories';
 
 export const Home = () => {
-  const [productsBase, setProductsBase] = React.useState([]);
+  const [productsBase, setProductsBase]: any = React.useState([]);
 
   React.useEffect(() => {
-    // fetch('https://dummyjson.com/products?skip=0&limit=100')
-    fetch(
-      'https://639de55b1ec9c6657bb515e8.mockapi.io/items?sortBy=price&order=desc'
-    )
+    // fetch(
+    //   'https://639de55b1ec9c6657bb515e8.mockapi.io/items?sortBy=price&order=desc'
+    //   )
+    fetch('https://dummyjson.com/products?skip=0&limit=100')
       .then((res) => res.json())
-      .then((dataBase) => setProductsBase(dataBase));
+      .then((dataBase) => setProductsBase(dataBase.products));
   }, []);
+  console.log(productsBase);
 
   //make context from sort and categories available here
   const [sortType, setSortType]: any = React.useState(0); //sorting

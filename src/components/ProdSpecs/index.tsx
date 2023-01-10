@@ -7,10 +7,14 @@ export function ProdSpecs() {
   const [productsBase, setProductsBase]: any = React.useState([]);
 
   React.useEffect(() => {
-    fetch(`https://639de55b1ec9c6657bb515e8.mockapi.io/items`)
+    // const url: any = `https://639de55b1ec9c6657bb515e8.mockapi.io/items`;
+    // fetch(`https://639de55b1ec9c6657bb515e8.mockapi.io/items`)
+    fetch(`https://dummyjson.com/products?skip=0&limit=100`)
       .then((res) => res.json())
       .then((dataBase) =>
-        setProductsBase(dataBase.filter((item: any) => item.id === Number(id)))
+        setProductsBase(
+          dataBase.products.filter((item: any) => item.id === Number(id))
+        )
       );
   }, [id]);
   console.log(productsBase);
