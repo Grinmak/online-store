@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './Price.module.css';
-export function Price(data: any) {
+
+interface PriceTypes {
+  priceValues: number[];
+}
+
+export function Price(data: PriceTypes) {
   const minMaxPrice = data.priceValues;
+
   return (
     <>
       <div className={styles.label}>

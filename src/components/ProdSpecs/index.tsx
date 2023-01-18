@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './ProdSpecs.module.css';
+import { ProductsTemplate } from '../Products';
 
 export function ProdSpecs() {
   const { id } = useParams();
-  const [productsBase, setProductsBase]: any = React.useState([]);
+  const [productsBase, setProductsBase] = React.useState([]);
 
   React.useEffect(() => {
     // const url: any = `https://639de55b1ec9c6657bb515e8.mockapi.io/items`;
@@ -13,14 +14,16 @@ export function ProdSpecs() {
       .then((res) => res.json())
       .then((dataBase) =>
         setProductsBase(
-          dataBase.products.filter((item: any) => item.id === Number(id))
+          dataBase.products.filter(
+            (item: ProductsTemplate) => item.id === Number(id)
+          )
         )
       );
   }, [id]);
-  console.log(productsBase);
+  console.log('PRODBASE: ', productsBase);
   return (
     <div className={styles.section}>
-      {productsBase.map((item: any) => {
+      {productsBase.map((item: ProductsTemplate) => {
         return (
           <div className={styles.card}>
             <div className={styles.title}>{item.title}</div>

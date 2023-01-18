@@ -1,6 +1,11 @@
 import React from 'react';
 import styles from './Stock.module.css';
-export function Stock(data: any) {
+
+interface StockTypes {
+  stockAmount: number[];
+}
+
+export function Stock(data: StockTypes) {
   const minMaxStock = data.stockAmount;
   return (
     <>

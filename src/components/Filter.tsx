@@ -24,16 +24,14 @@ export function Filters({
   getCateg,
   removeCateg,
 }: FilterTypes) {
-  console.log('DataBase: ', dataBase);
-
   //get categories
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
     fetch('https://dummyjson.com/products/categories')
       .then((res) => res.json())
-      // .then((dataBase) => setProductsBase(dataBase));
       .then((categ) => setCategories(categ));
   }, []);
+
   //get brands
   const brandsListSet = new Set(
     dataBase.map((item: ProductsTemplate) => item.brand)

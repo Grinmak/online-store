@@ -2,19 +2,14 @@ import React from 'react';
 import styles from './Categories.module.css';
 
 interface CategTypes {
-  getCateg: Function;
-  removeCateg: Function;
-  categories: any;
+  getCateg: (val: ConcatArray<never>) => void;
+  removeCateg: (val: string) => void;
+  categories: string[];
 }
 
+// type MegaType = HTMLInputElement & ConcatArray<never>;
 export function Categories({ getCateg, removeCateg, categories }: CategTypes) {
-  // const [categories, setCategories] = React.useState([]);
-  // React.useEffect(() => {
-  //   fetch('https://dummyjson.com/products/categories')
-  //     .then((res) => res.json())
-  //     // .then((dataBase) => setProductsBase(dataBase));
-  //     .then((categ) => setCategories(categ));
-  // }, []);
+  console.log(categories);
 
   return (
     <div className={styles.categories}>
@@ -27,11 +22,11 @@ export function Categories({ getCateg, removeCateg, categories }: CategTypes) {
                 type='checkbox'
                 name={categ}
                 id={categ}
-                onClickCapture={(e: any) => {
-                  if (e.target.checked) {
-                    getCateg(e.target.name);
+                onClickCapture={(e: React.MouseEvent<HTMLElement>) => {
+                  if ((e.target as HTMLInputElement).checked) {
+                    getCateg((e.target as HTMLInputElement).name);
                   } else {
-                    removeCateg(e.target.name);
+                    removeCateg((e.target as HTMLInputElement).name);
                   }
                 }}
               />

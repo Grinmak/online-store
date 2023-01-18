@@ -14,7 +14,6 @@ export interface ProductsTemplate {
   category: string;
   thumbnail: string;
   images: string[];
-  // propsSearch?: ;
 }
 export function ProductCard(props: ProductsTemplate) {
   return (

@@ -3,12 +3,12 @@ import React from 'react';
 import styles from './Brands.module.css';
 
 interface BrandsType {
-  brandsData: any;
-  categories?: any;
-  getName: any;
-  removeName: any;
+  brandsData: string[];
+  categories?: string[];
+  getName: (val: ConcatArray<never>) => void;
+  removeName: (val: string) => void;
 }
-
+// type MegaType = HTMLInputElement & ConcatArray<never>;
 export function Brands({ brandsData, getName, removeName }: BrandsType) {
   // const [checkboxStatus, setCheckboxStatus] = React.useState(false);
 
