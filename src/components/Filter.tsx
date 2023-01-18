@@ -11,9 +11,9 @@ import { ProductsTemplate } from './Products';
 
 interface FilterTypes {
   dataBase: any;
-  getName: Function;
-  removeName: Function;
-  getCateg: Function;
+  getName: any;
+  removeName: any;
+  getCateg: any;
   removeCateg: Function;
 }
 

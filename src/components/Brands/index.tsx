@@ -4,18 +4,18 @@ import styles from './Brands.module.css';
 
 interface BrandsType {
   brandsData: any;
-  categories: any;
-  getName: Function;
-  removeName: Function;
+  // categories: string[];
+  getName: any;
+  removeName: any;
 }
 
 export function Brands({
   brandsData,
   getName,
   removeName,
-  categories,
-}: BrandsType) {
-  const [checkboxStatus, setCheckboxStatus] = React.useState(false);
+}: // categories,
+BrandsType) {
+  // const [checkboxStatus, setCheckboxStatus] = React.useState(false);
 
   return (
     <>
@@ -26,15 +26,15 @@ export function Brands({
             return (
               <div key={index}>
                 <input
-                  disabled={checkboxStatus}
+                  // disabled={checkboxStatus}
                   type='checkbox'
                   name={categ}
                   id={categ}
-                  onClickCapture={(e: any) => {
-                    if (e.target.checked) {
-                      getName(e.target.name);
+                  onClickCapture={(event: React.MouseEvent<HTMLElement>) => {
+                    if ((event.target as HTMLInputElement).checked) {
+                      getName((event.target as HTMLInputElement).name);
                     } else {
-                      removeName(e.target.name);
+                      removeName((event.target as HTMLInputElement).name);
                     }
                   }}
                 />

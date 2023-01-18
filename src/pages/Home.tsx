@@ -4,51 +4,39 @@ import { Sort } from '../components/Sort';
 import '../css/Common.css';
 import { ProductCard, ProductsTemplate } from '../components/Products';
 import { Filters } from '../components/Filter';
-// import { Categories } from '../components/Categories';
 
 export const Home = () => {
-  const [productsBase, setProductsBase]: any = React.useState([]);
+  const [productsBase, setProductsBase] = React.useState([]);
 
   React.useEffect(() => {
-    // fetch(
-    //   'https://639de55b1ec9c6657bb515e8.mockapi.io/items?sortBy=price&order=desc'
-    //   )
     fetch('https://dummyjson.com/products?skip=0&limit=100')
       .then((res) => res.json())
       .then((dataBase) => setProductsBase(dataBase.products));
   }, []);
-  console.log(productsBase);
 
-  //make context from sort and categories available here
-  const [sortType, setSortType]: any = React.useState(0); //sorting
   const [noFilters, setNoFilters] = React.useState(true);
 
   //FILTER BRANDS
-  const [selectedBrands, setSelectedBrands]: any = React.useState([]);
+  const [selectedBrands, setSelectedBrands] = React.useState(Array);
   //get name if checked
-  const getBrandName = (name: any) => {
+  const getBrandName = (name: ConcatArray<never>) => {
     setSelectedBrands(selectedBrands.concat(name));
     setNoFilters(false);
-    // allProdLoad();
   };
   //remove name if unchecked
-  const removeBrandName = (name: any) => {
-    setSelectedBrands(selectedBrands.filter((item: any) => item !== name));
+  const removeBrandName = (name: string) => {
+    setSelectedBrands(selectedBrands.filter((item) => item !== name));
   };
   //END BRANDS
 
   //FILTER CATEGORIES
-  // interface CategTypes {
-  //   selectedCateg: string[];
-  //   setSelectedCat: Function;
-  // }
-  const [selectedCateg, setSelectedCat]: any = React.useState([]);
-  const addCateg = (name: any) => {
+  const [selectedCateg, setSelectedCat] = React.useState(Array);
+  const addCateg = (name: ConcatArray<never>) => {
     setSelectedCat(selectedCateg.concat(name));
     setNoFilters(false);
   };
-  const removeCateg = (name: any) => {
-    setSelectedCat(selectedCateg.filter((item: any) => item !== name));
+  const removeCateg = (name: string) => {
+    setSelectedCat(selectedCateg.filter((item) => item !== name));
   };
 
   //END CATEGORIES
@@ -58,10 +46,10 @@ export const Home = () => {
       <section className='main-content'>
         <Filters
           dataBase={productsBase}
-          getName={(val: any) => getBrandName(val)}
-          removeName={(val: any) => removeBrandName(val)}
-          getCateg={(val: any) => addCateg(val)}
-          removeCateg={(val: any) => removeCateg(val)}
+          getName={(val: ConcatArray<never>) => getBrandName(val)}
+          removeName={(val: string) => removeBrandName(val)}
+          getCateg={(val: ConcatArray<never>) => addCateg(val)}
+          removeCateg={(val: string) => removeCateg(val)}
         />
         <div className='product-area'>
           <div className='sorting-wrapper'>

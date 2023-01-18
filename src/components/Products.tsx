@@ -14,9 +14,9 @@ export interface ProductsTemplate {
   category: string;
   thumbnail: string;
   images: string[];
-  propsSearch: any;
+  // propsSearch?: ;
 }
-export function ProductCard(props: any) {
+export function ProductCard(props: ProductsTemplate) {
   return (
     <div className='card__body'>
       <div className='card__image-body'>
