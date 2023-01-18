@@ -4,17 +4,12 @@ import styles from './Brands.module.css';
 
 interface BrandsType {
   brandsData: any;
-  // categories: string[];
+  categories?: any;
   getName: any;
   removeName: any;
 }
 
-export function Brands({
-  brandsData,
-  getName,
-  removeName,
-}: // categories,
-BrandsType) {
+export function Brands({ brandsData, getName, removeName }: BrandsType) {
   // const [checkboxStatus, setCheckboxStatus] = React.useState(false);
 
   return (

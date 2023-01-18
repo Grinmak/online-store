@@ -10,11 +10,11 @@ import styles from '../css/Filters.module.css';
 import { ProductsTemplate } from './Products';
 
 interface FilterTypes {
-  dataBase: any;
-  getName: any;
-  removeName: any;
-  getCateg: any;
-  removeCateg: Function;
+  dataBase: never[];
+  getName: (val: ConcatArray<never>) => void;
+  removeName: (val: string) => void;
+  getCateg: (val: ConcatArray<never>) => void;
+  removeCateg: (val: string) => void;
 }
 
 export function Filters({
@@ -24,6 +24,8 @@ export function Filters({
   getCateg,
   removeCateg,
 }: FilterTypes) {
+  console.log('DataBase: ', dataBase);
+
   //get categories
   const [categories, setCategories] = React.useState([]);
   React.useEffect(() => {
