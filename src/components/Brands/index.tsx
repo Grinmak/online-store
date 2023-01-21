@@ -5,7 +5,7 @@ import styles from './Brands.module.css';
 interface BrandsType {
   brandsData: string[];
   categories?: string[];
-  getName: (val: ConcatArray<never>) => void;
+  getName: (val: string) => void;
   removeName: (val: string) => void;
 }
 // type MegaType = HTMLInputElement & ConcatArray<never>;

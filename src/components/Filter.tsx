@@ -11,9 +11,9 @@ import { ProductsTemplate } from './Products';
 
 interface FilterTypes {
   dataBase: never[];
-  getName: (val: ConcatArray<never>) => void;
+  getName: (val: string) => void;
   removeName: (val: string) => void;
-  getCateg: (val: ConcatArray<never>) => void;
+  getCateg: (val: string) => void;
   removeCateg: (val: string) => void;
 }
 

@@ -19,7 +19,7 @@ export const Home = () => {
   //FILTER BRANDS
   const [selectedBrands, setSelectedBrands] = React.useState(Array);
   //get name if checked
-  const getBrandName = (name: ConcatArray<never>) => {
+  const getBrandName = (name: string) => {
     setSelectedBrands(selectedBrands.concat(name));
     setNoFilters(false);
   };
@@ -31,7 +31,7 @@ export const Home = () => {
 
   //FILTER CATEGORIES
   const [selectedCateg, setSelectedCat] = React.useState(Array);
-  const addCateg = (name: ConcatArray<never>) => {
+  const addCateg = (name: string) => {
     setSelectedCat(selectedCateg.concat(name));
     setNoFilters(false);
   };
@@ -46,9 +46,9 @@ export const Home = () => {
       <section className='main-content'>
         <Filters
           dataBase={productsBase}
-          getName={(val: ConcatArray<never>) => getBrandName(val)}
+          getName={(val: string) => getBrandName(val)}
           removeName={(val: string) => removeBrandName(val)}
-          getCateg={(val: ConcatArray<never>) => addCateg(val)}
+          getCateg={(val: string) => addCateg(val)}
           removeCateg={(val: string) => removeCateg(val)}
         />
         <div className='product-area'>

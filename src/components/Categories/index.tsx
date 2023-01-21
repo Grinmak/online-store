@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Categories.module.css';
 
 interface CategTypes {
-  getCateg: (val: ConcatArray<never>) => void;
+  getCateg: (val: string) => void;
   removeCateg: (val: string) => void;
   categories: string[];
 }
