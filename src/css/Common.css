@@ -1,0 +1,16 @@
+.products-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 240px 5fr;
+}
+
+.sorting-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

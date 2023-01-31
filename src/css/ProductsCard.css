@@ -1,0 +1,38 @@
+.card__body {
+  display: flex;
+  flex-flow: column;
+  width: 200px;
+  height: 220px;
+  align-items: center;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.card__image-body {
+  width: 100%;
+  height: 60%;
+  border-radius: 5px;
+}
+.card__image {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+}
+
+/* .card__info {
+} */
+.card__discount {
+  position: absolute;
+  left: 5%;
+  bottom: 40%;
+  background: #20de20;
+  padding: 1px 2px;
+  border-radius: 4px;
+  color: #fff;
+}
+/* .card__price-brand {
+} */
